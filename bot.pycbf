@@ -1,3 +1,5 @@
+from json import loads
+
 def bot():
     comment = read()
     username = comment['username']
@@ -7,41 +9,41 @@ def bot():
     superusers=open("superusers.txt").read().splitlines()
     ben=['Ben?', 'No.', 'Yes?', 'Oh-ho-ho!', 'Na-na-na-na-na.', 'Eurgh.']
     ships=['you hit an iceberg and die', 'you die due to food poisoning', 'you took an untrusted covid vaccine and suddenly died', 'you lived', 'you found your goofy ahh uncle and died', 'quandale dingle dipped you in hot oil and died', 'a furry jumped on you...... you died', 'pablo escobar shot you twenty times', '[RESPONSE NOT FOUND]', 'you woke up and it was a dream, and died', 'tweeted and got ratioed, then died', 'a phycho toddler killed you', '*windows xp shutdown sound*', 'joe biden was the driver, you died', 'got banned for violating the dress code', 'got in a crowd of 4chan users, you died', 'nikocado avocado ate you', 'ishowspeed yelled at you, you died of fear', 'got trolled, you died', 'someone posted fanart of your oc to e621', 'twitter cancelled you, suddenly died', 'the fbi made you eat pigs until you told them where the bodies were', 'got cbt, then died', 'edp445 was baking cupcakes, you drowned instead', 'twomad flopped on you saying goodnight girl', 'your mom grounded you', 'the government was eating pickles', 'you farded and died', 'got a liver transplant with a tiktoker', 'nikocado avocado inhaled you, you died', 'freddy fazbear belly flopped on you and died', 'got kicked in the thighs by a naruto wannabe', 'thought this was a relationship command', 'got attacked by big fat men', '/e danced', 'got hit by baller and died', 'micheal jackson beated you with a stick', 'peter griffin suffocated you by his belly', 'someone got a glock from the rari', 'suddenly ankha zone plays', 'your uncle laughs from behind you', 'got noscoped by a call of duty player', 'furries started kissing you and you died', 'npesta screamed at you']
-    if comment.startswith('/help'):
+    if content.startswith('/help'):
         reply(f'@{username}, Autoworks Help: /h_fun, /h_gd, /h_etc', perc)
-    elif comment.startswith('/h_fun'):
+    elif content.startswith('/h_fun'):
         reply(f'@{username}, Fun Cmds: /amicool, /amipog, /amigay, /amifurry, /yesorno (msg), /poll (msg), /ship, /ben (msg), /ai (msg)', perc)
-    elif comment.startswith('/h_gd'):
+    elif content.startswith('/h_gd'):
         reply(f'@{username}, GD Cmds: /stats (user), /pointercrate (lvl)', perc)
-    elif comment.startswith('/h_etc'):
+    elif content.startswith('/h_etc'):
         reply(f'@{username}, Etc Cmds: /hello, /bye, /say (msg), /cbfstudio, /todo', perc)
-    elif comment.startswith('/amicool'):
+    elif content.startswith('/amicool'):
         reply(f'@{username} is {str(perc)} cool!', perc)
-    elif comment.startswith('/amipog'):
+    elif content.startswith('/amipog'):
         reply(f'@{username} is {str(perc)} poggers!', perc)
-    elif comment.startswith('/amifurry'):
+    elif content.startswith('/amifurry'):
         reply(f'@{username} is {str(perc)} a furry!', perc)
-    elif comment.startswith('/amigay'):
+    elif content.startswith('/amigay'):
         reply(f'@{username} is {str(perc)} gay!', perc)
-    elif comment.startswith('/yesorno'):
+    elif content.startswith('/yesorno'):
         reply(f'@{username}, {random.choice(["Yes", "No"])}.', '0')
-    elif comment.startswith('/poll'):
+    elif content.startswith('/poll'):
         reply(f'@{username}s Poll: {content} | Vote with Likes/Dislikes', '0')
     elif comment == '/ship':
         reply(f'@{username}, {random.choice(ship)}', '0')
     elif comment == '/ben':
         reply(f'@{username}, {random.choice(ben)}', '0')
-    elif comment.startswith('/ai'):
+    elif content.startswith('/ai'):
         c=content.split("/ai ")
         resp = requests.get("http://api.brainshop.ai/get?bid=169422&key=4GCemcdYgy50PlZ2&uid=0&msg="+c[1], headers={'Accept': 'application/json'})
         jsonResp = resp.json()
         reply(f'{jsonResp["cnt"]}', '0')
-    elif comment.startswith('/stats'):
+    elif content.startswith('/stats'):
         c=content.split("/stats ")
         shtats=loads(requests.get(f"http://gdbrowser.com/api/profile/{c[1]}").text)
         cc=f"@{username}, {c[1]} has {shtats['stars']} Stars, {shtats['diamonds']} Diamonds, {shtats['coins']} Coins, {shtats['userCoins']} User Coins, {shtats['demons']} Demons and {shtats['cp']} Creator Points."
         reply(f'{cc}', '0')
-    elif comment.startswith('/pointercrate'):
+    elif content.startswith('/pointercrate'):
         c=content.split("/pointercrate ")
         d=loads(requests.get("http://pointercrate.com/api/v2/demons/listed?limit=100").text)
         d2=loads(requests.get("http://pointercrate.com/api/v2/demons/listed?after=100").text)
@@ -53,35 +55,35 @@ def bot():
         reply(f'Hello {username}!', '0')
     elif comment == '/bye':
         reply(f'Goodbye {username}!', '0')
-    elif comment.startswith('/say'):
+    elif content.startswith('/say'):
         reply(f'@{username}, {content}', '0')
     elif comment == '/cbfstudio':
         reply(f'@{username}, build bots with cbf.sevenworks.eu.org', '0')
     elif comment == '/todo':
         reply(f'@{username}, TODO: economy cmds, leveling system, moderation, webpage, site builder, api', '0')
-    elif comment.startswith('/ban'):
+    elif content.startswith('/ban'):
         pass
-    elif comment.startswith('/unban'):
+    elif content.startswith('/unban'):
         pass
-    elif comment.startswith('/checkban'):
+    elif content.startswith('/checkban'):
         pass
     elif comment == '/dailyreward':
         pass
     elif comment == '/weeklyreward':
         pass
-    elif comment.startswith('/flipcoin'):
+    elif content.startswith('/flipcoin'):
         pass
-    elif comment.startswith('/slots'):
+    elif content.startswith('/slots'):
         pass
     elif comment == '/work':
         pass
     elif comment == '/beg':
         pass
-    elif comment.startswith('/gift'):
+    elif content.startswith('/gift'):
         pass
-    elif comment.startswith('/xp'):
+    elif content.startswith('/xp'):
         pass
-    elif comment.startswith('/add2site'):
+    elif content.startswith('/add2site'):
         pass
     else:
         pass
